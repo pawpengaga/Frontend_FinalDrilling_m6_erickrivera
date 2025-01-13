@@ -31,6 +31,17 @@ public class UserWebController {
 
   /* ************************************************* */
 
+  @PostMapping("/materias/nuevo")
+  public String nuevaMateria(@ModelAttribute Materia materia, Model model){
+
+    materiaService.crearMateriaApi(materia);
+
+    model.addAttribute("mensaje", "Materia creada!");
+    model.addAttribute("tipo", "success");
+    return "redirect:/alumnos/nuevo";
+
+  }
+
   @GetMapping("/alumnos")
   public String listarAlumnos(Model model){
     model.addAttribute("alumnos", alumnoService.listarAlumnosApi());
@@ -40,6 +51,7 @@ public class UserWebController {
   @GetMapping("/alumnos/nuevo")
   public String nuevoAlumnoForm(Model model){
     model.addAttribute("alumno", new Alumno());
+    model.addAttribute("materia", new Materia());
     model.addAttribute("materias", materiaService.listarMateriasApi());
     return "alumno-form";
 
