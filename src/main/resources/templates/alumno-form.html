@@ -37,11 +37,6 @@
     <h1 class="display-4 mb-5">Nuevo Alumno</h1>
 
     <section>
-
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Nueva materia
-      </button>
-  
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <form th:action="@{/materias/nuevo}" th:object="${materia}" class="modal-content needs-validation" method="POST" novalidate>
@@ -69,7 +64,7 @@
 
     <section id="form-section">
 
-      <form th:action="@{/alumnos/nuevo}" th:object="${alumno}" method="POST" class="col-8 d-flex flex-column gap-4 needs-validation" novalidate>
+      <form id="form-nuevo-alumno" th:action="@{/alumnos/nuevo}" th:object="${alumno}" method="POST" class="col-8 d-flex flex-column gap-4 needs-validation" novalidate>
         <div class="form-body">
 
           <div class="mb-3">
@@ -99,15 +94,14 @@
           <!-- ----------------- El experimiento de las checkboxes ----------------- -->
 
           <div class="mb-3">
-            <label for="materias" class="form-label">Materias <em>Elija de entre una lista de materias disponibles</em></label>
-            <div id="materias">
-              <div th:each="materia : ${materias}" class="form-check">
+            <label for="materias" class="form-label mb-3"><strong>Materias</strong> <em>Elija de entre una lista de materias disponibles</em></label>
+            <div id="materias" class="d-flex flex-wrap">
+              <div th:each="materia : ${materias}" class="form-check col-4">
                 <input class="form-check-input" type="checkbox" 
                   th:id="'materia_' + ${materia.id}" 
                   th:name="materiaIds" 
                   th:value="${materia.id}" 
-                  th:checked="${#lists.contains(alumno.materiaList, materia)}"
-                  required />
+                  th:checked="${#lists.contains(alumno.materiaList, materia)}"/>
                 <label class="form-check-label" th:for="'materia_' + ${materia.id}" th:text="${materia.nombre}"></label>
               </div>
             </div>
@@ -119,7 +113,12 @@
           <!-- ----------------- El experimiento de las checkboxes ----------------- -->
 
         </div>
-        <button class="btn btn-dark" type="submit" style="width: fit-content;">Nuevo Usuario</button>
+        <div class="w-100">
+          <button class="btn btn-dark" type="submit" style="width: fit-content;">Nuevo Usuario</button>
+          <button type="button" class="btn btn-primary" style="width: fit-content;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Nueva materia
+          </button>
+        </div>
         <!-- Aqui deberia ir un boton de volver -->
       </form>
 
@@ -152,6 +151,7 @@
         }, false)
       })
     })()
+
   </script>
 </body>
 </html>
