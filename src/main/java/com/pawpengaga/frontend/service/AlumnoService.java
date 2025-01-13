@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -36,6 +38,19 @@ public class AlumnoService {
     return response.getBody();
 
   }
+
+  public void crearAlumnoApi(Alumno alumno){
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    ruta = "http://localhost:3000/api/v1/alumnos/grabar";
+
+    HttpEntity<Alumno> request = new HttpEntity<Alumno>(alumno, headers);
+    restTemplate.postForEntity(ruta, request, String.class);
+
+  }
+
+
 
 
 }
