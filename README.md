@@ -9,7 +9,7 @@ Ejecutar el proyecto de manera normal
 
 ## Etapas del proyecto 🀄
 
-- Consumir la información
+- Consumir la api `<- LISTO`
 - Salvar el JWT
 - Hacer solicitudes usando el JWT adecuadamente
 - Hacer las redirecciones

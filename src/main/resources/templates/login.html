@@ -53,10 +53,12 @@
        </form>
 
    </section>
-  <div th:if="${error != null}" th:class="me-4 mb-4 alert alert-dismissible alert-warning" role="alert" style="position: absolute; bottom: 0; right: 0; min-width: 400px;">
-    <div th:text="${error}"></div>
+  <!-- COMPONENTE DE AVISOS -->
+  <div th:if="${mensaje != null && tipo != null}" th:class="'me-4 mb-4 alert alert-dismissible ' + 'alert-' + ${tipo}" role="alert" style="position: absolute; bottom: 0; right: 0; min-width: 400px;">
+    <div th:text="${mensaje}"></div>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
+  <!-- COMPONENTE DE AVISOS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
