@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.pawpengaga.frontend.model.Alumno;
 import com.pawpengaga.frontend.model.Materia;
+import com.pawpengaga.frontend.utils.TokenUtilities;
 
 @Service
 public class MateriaService {
@@ -21,7 +22,9 @@ public class MateriaService {
   @Autowired
   RestTemplate restTemplate;
 
+  static TokenUtilities tokenUtilities = new TokenUtilities();
   String ruta;
+
 
   /* ************************************************* */
 
@@ -30,7 +33,10 @@ public class MateriaService {
     Materia materiaContenedora = null;
     ruta = "http://localhost:3000/api/v1/materias";
 
-    HttpEntity<Materia> request = new HttpEntity<Materia>(materiaContenedora);
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Authorization", "Bearer " + tokenUtilities.obtenerJWT());
+
+    HttpEntity<Materia> request = new HttpEntity<>(materiaContenedora, headers);
     ResponseEntity<List<Materia>> response = restTemplate.exchange(ruta, HttpMethod.GET, request, new ParameterizedTypeReference<List<Materia>>(){});
 
     return response.getBody();
@@ -41,6 +47,7 @@ public class MateriaService {
 
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_JSON);
+    headers.add("Authorization", "Bearer " + tokenUtilities.obtenerJWT());
     ruta = "http://localhost:3000/api/v1/materias/grabar";
 
     HttpEntity<Materia> request = new HttpEntity<>(materia, headers);

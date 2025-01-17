@@ -13,12 +13,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.pawpengaga.frontend.model.Alumno;
+import com.pawpengaga.frontend.utils.TokenUtilities;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class AlumnoService {
 
   @Autowired
   RestTemplate restTemplate;
+
+  static TokenUtilities tokenUtilities = new TokenUtilities();
 
   String ruta;
 
@@ -29,11 +34,17 @@ public class AlumnoService {
     Alumno alumnoContenedor = null;
     ruta = "http://localhost:3000/api/v1/alumnos";
 
-    HttpEntity<Alumno> request = new HttpEntity<Alumno>(alumnoContenedor);
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Authorization", "Bearer " + tokenUtilities.obtenerJWT());
+
+    HttpEntity<Alumno> request = new HttpEntity<>(alumnoContenedor, headers);
+
+    // System.out.println("AQUI DEBERIA ESTAR EL HEADER " + request.getHeaders());
     ResponseEntity<List<Alumno>> response = restTemplate.exchange(ruta, HttpMethod.GET, request, new ParameterizedTypeReference<List<Alumno>>(){});
     
     // Teoria: Si podemos retornar aqui el cuerpo de la respuesta
     // No hay ninguna razón por la que no podríamos además retornar los headers
+    // Update de una semana despues: Era asi pero en otro sitio
 
     return response.getBody();
 
@@ -43,6 +54,7 @@ public class AlumnoService {
 
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_JSON);
+    headers.add("Authorization", "Bearer " + tokenUtilities.obtenerJWT());
     ruta = "http://localhost:3000/api/v1/alumnos/grabar";
 
     HttpEntity<Alumno> request = new HttpEntity<Alumno>(alumno, headers);
