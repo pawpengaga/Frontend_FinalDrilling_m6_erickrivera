@@ -17,8 +17,6 @@ import com.pawpengaga.frontend.model.Materia;
 import com.pawpengaga.frontend.service.AlumnoService;
 import com.pawpengaga.frontend.service.MateriaService;
 
-import jakarta.servlet.http.HttpSession;
-
 @Controller
 @RequestMapping("/")
 public class UserWebController {
@@ -42,10 +40,10 @@ public class UserWebController {
 
   }
 
-  @GetMapping("/alumnos")
+  @GetMapping({"/alumnos", "/"})
   public String listarAlumnos(Model model){
     model.addAttribute("alumnos", alumnoService.listarAlumnosApi());
-    return "alumnos";
+    return "index";
   }
 
   @GetMapping("/alumnos/nuevo")

@@ -21,10 +21,16 @@ public class GlobalExceptionHandler {
     if (exception.getStatusCode() == HttpStatus.FORBIDDEN) {
       model.addAttribute("mensaje", "Usted no posee los permisos necesarios para realizar esta acción");
       model.addAttribute("tipo", "info");
-      return "index";
+      return "exceptions-page";
+    }
+
+    if (exception.getStatusCode() == HttpStatus.NOT_FOUND) {
+      model.addAttribute("mensaje", "El recurso que busca no se ha encontrado...");
+      model.addAttribute("tipo", "danger");
+      return "exceptions-page";
     }
     
-    return "index";
+    return "exceptions-page";
 
   }
 }

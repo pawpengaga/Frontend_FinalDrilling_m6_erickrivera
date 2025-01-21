@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
   </head>
 <body>
   <section>
     <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid px-5">
-        <a class="navbar-brand text-white" th:href="@{/}">Spring Security</a>
+        <a class="navbar-brand text-white" th:href="@{/}">Drilling M6</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,13 +22,10 @@
               <a class="nav-link text-white" th:href="@{/}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" th:href="@{/pages/public}">Público</a>
+              <a class="nav-link text-white" th:href="@{/alumnos}">Alumnos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" th:href="@{/pages/privado}">Privado</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" th:href="@{/pages/config}">Configuración</a>
+              <a class="nav-link text-white" th:href="@{/login}">Iniciar sesión</a>
             </li>
           </ul>
         </div>
@@ -36,7 +35,7 @@
 
   <section class="container mt-5">   
 
-      <h3 class="diplay-4 mb-5">Inicio de sesión</h3>
+      <h1 class="mb-5">Universidad: Inicio de sesión</h1>
 
       <form th:action="@{/login}" method="POST">
         <div class="d-flex flex-column gap-5" style="width: 50%;">
@@ -46,7 +45,7 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="password" id="password">Contraseña</label>
-            <input type="text" class="form-control" id="password" name="password" required />
+            <input type="password" class="form-control" id="password" name="password" required />
           </div>
           <button class="btn btn-primary" style="width: fit-content;">Iniciar sesión</button>
         </div>

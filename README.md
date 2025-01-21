@@ -2,6 +2,20 @@
 
 Conjunto de vistas y funcionalidades para interacturar con una API REST que esté protegidA por JWT
 
+## Puertos
+
+### Backend 🌸
+
+```
+localhost:3000
+```
+
+### Frontend 🌼
+
+```
+localhost:3001
+```
+
 ## Instrucciones para ejecución
 
 Ejecutar el proyecto de manera normal
@@ -10,12 +24,8 @@ Ejecutar el proyecto de manera normal
 ## Etapas del proyecto 🀄
 
 - Consumir la api `<- LISTO`
-- Salvar el JWT
-- Hacer solicitudes usando el JWT adecuadamente
-- Hacer las redirecciones
-
-## Ideas para el proyecto
-
-- Crear validación personalizada para el RUT
+- Salvar el JWT `<- LISTO`
+- Hacer solicitudes usando el JWT adecuadamente `<- LISTO`
+- Hacer las redirecciones `<- LISTO`
 
 🌸 Enlace al backend 🌸
