@@ -28,4 +28,4 @@ Ejecutar el proyecto de manera normal
 - Hacer solicitudes usando el JWT adecuadamente `<- LISTO`
 - Hacer las redirecciones `<- LISTO`
 
-🌸 Enlace al backend 🌸
+🌸 [Enlace al backend](https://github.com/pawpengaga/Backend_FinalDrilling_m6_erickrivera) 🌸
