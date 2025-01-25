@@ -1,6 +1,6 @@
 # 🌼 Drilling final módulo 6 - Frontend 🌼
 
-Conjunto de vistas y funcionalidades para interacturar con una API REST que esté protegidA por JWT
+Conjunto de vistas y funcionalidades para interacturar con una API REST que esté protegida por JWT
 
 ## Puertos
 
